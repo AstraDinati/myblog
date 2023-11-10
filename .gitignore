@@ -1,0 +1,26 @@
+# Virtual environment
+venv/
+
+# Environment variables
+.env
+
+# Compiled Python files
+__pycache__/
+*.pyc
+*.pyo
+
+/node_modules
+
+media/
+
+# Database
+db.sqlite3
+/myblog/myblog/__pycache__/
+/myblog/blog/__pycache__/
+
+
+# Logs
+/myblog/logs/
+
+# Local settings
+/myblog/myblog/settings/local.py

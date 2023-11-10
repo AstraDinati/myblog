@@ -1,0 +1,21 @@
+{
+  "name": "myblog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "postcss blog/static/css/styles.css -o blog/static/css/styles.css",
+    "watch-css": "postcss blog/static/css/styles.css -o blog/static/css/styles.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.4.16"
+  },
+  "devDependencies": {
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5"
+  }
+}
