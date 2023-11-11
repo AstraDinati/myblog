@@ -3,14 +3,25 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+
+
 <div class="container mx-auto mt-4">
-    <div class="post bg-white p-6 shadow-md">
-        <h1 class="text-3xl font-bold mb-2">{{ post.title }}</h1>
+    <a href="{% url 'post_list' %}" class="text-gray-500 hover:text-gray-700 ml-4">
+        <!-- Используем новую иконку стрелки -->
+        <svg width="48" height="48" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+            xmlns="http://www.w3.org/2000/svg" style="opacity: 0.9; stroke: lightgray;">
+            <path d="M15 18L9 12L15 6" stroke-width="2" strokeLinecap="round" strokeLinejoin="round"></path>
+        </svg>
+    </a>
+
+    <div class="post bg-white p-6 shadow-md lg:w-1/2 mx-auto">
+        <h1 class=" text-3xl font-bold mb-2">{{ post.title }}</h1>
         <p class="text-gray-600 mb-4">{{ post.pub_date }}</p>
-        <p class="text-gray-800">{{ post.content }}</p>
+        <p class="text-gray-800">{{ post.content|linebreaks }}</p>
         {% if post.photo %}
         <img src="{{ post.photo.url }}" alt="{{ post.title }}" class="mb-4">
         {% endif %}
+        <br>
         <p>Tags: {% for tag in post.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
     </div>
 </div>
