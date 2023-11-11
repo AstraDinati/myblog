@@ -3,14 +3,39 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<div class="container mx-auto mt-4">
-    {% for post in posts %}
-    <div class="post bg-white p-6 shadow-md mb-4 lg:w-1/2 mx-auto">
-        <h2 class="text-2xl font-bold mb-2"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-        <p class="text-gray-600 mb-2">{{ post.pub_date }}</p>
-        <p class="text-gray-800">{{ post.content|truncatewords:24 }}</p>
-        <p>Tags: {% for tag in post.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+<div class="container mx-auto flex justify-center">
+
+    <!-- Список постов -->
+    <div class="lg:w-1/2 ml-4"> <!-- Добавил ml-4 для отрицательного отступа слева -->
+        {% for post in posts %}
+        <div class="post bg-white p-6 shadow-md mb-4 mx-auto"> <!-- Уменьшил mb-4 на mb-2 -->
+            <h2 class="text-2xl font-bold mb-2"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            <p class="text-gray-600 mb-2">{{ post.pub_date }}</p>
+            <p class="text-gray-800">{{ post.content|truncatewords:24 }}</p>
+            <p>Tags: {% for tag in post.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
+
+    <!-- Форма для ввода тега и Список тегов -->
+    <div class="lg:w-1/5">
+        <div class="post p-6 shadow-md mb-4 rounded">
+            <form action="{% url 'post_list' %}" method="get">
+                <label for="tag">Filter by tags:</label>
+                <div class="flex items-center">
+                    <input type="text" name="tag" id="tag" placeholder="Enter a tag">
+                    <button type="submit">Filter</button>
+                </div>
+            </form>
+            <br>
+            <strong>Tags:</strong>
+            <div class="flex-wrap gap-2">
+                {% for tag in tags %}
+                <a href="{% url 'post_list' %}?tag={{ tag.name }}" class="tag-link">{{ tag.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
 </div>
 {% endblock %}

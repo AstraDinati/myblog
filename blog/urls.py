@@ -1,9 +1,10 @@
 # blog/urls.py
 from django.urls import path
-from . import views
+from .views import post_list, post_detail, tag_filter
 
 
 urlpatterns = [
-    path("", views.post_list, name="post_list"),
-    path("post/<int:pk>/", views.post_detail, name="post_detail"),
+    path("", post_list, name="post_list"),
+    path("post/<int:pk>/", post_detail, name="post_detail"),
+    path("tag-filter/", tag_filter, name="tag_filter"),
 ]
