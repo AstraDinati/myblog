@@ -19,8 +19,8 @@
 
     <!-- Форма для ввода тега и Список тегов -->
     <div class="lg:w-1/5">
-        <div class="post p-6 shadow-md mb-4 rounded">
-            <form action="{% url 'post_list' %}" method="get">
+        <div class="post p-6 shadow-md rounded">
+            <form action="{% url 'tag_filter' %}" method="get">
                 <label for="tag">Filter by tags:</label>
                 <div class="flex items-center">
                     <input type="text" name="tag" id="tag" placeholder="Enter a tag">
@@ -28,10 +28,15 @@
                 </div>
             </form>
             <br>
+            <a href="{% url 'post_list' %}" class="hover:bg-gray-200 hover:text-blue-500 hover:underline">Reset
+                filters</a>
+            <br>
+            <br>
             <strong>Tags:</strong>
-            <div class="flex-wrap gap-2">
+            <div class=" flex-wrap gap-2 mb-16">
                 {% for tag in tags %}
-                <a href="{% url 'post_list' %}?tag={{ tag.name }}" class="tag-link">{{ tag.name }}</a>
+                <a href="{% url 'tag_filter' %}?tag={{ tag.name }}"
+                    class="tag-link hover:bg-gray-200 hover:text-blue-500 hover:underline">{{ tag.name }}</a>
                 {% endfor %}
             </div>
         </div>

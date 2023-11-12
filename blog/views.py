@@ -4,7 +4,7 @@ from .models import Post, Tag
 
 
 def post_list(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by("-pub_date")
     tags = Tag.get_all_tags()
     return render(request, "blog/post_list.html", {"posts": posts, "tags": tags})
 
@@ -16,11 +16,9 @@ def post_detail(request, pk):
 
 def tag_filter(request):
     tag_name = request.GET.get("tag")
-    if tag_name:
-        posts = Post.objects.filter(tags__name=tag_name)
-    else:
-        posts = Post.objects.all()
+    posts = Post.objects.filter(tags__name=tag_name) if tag_name else Post.objects.all()
     tags = Tag.get_all_tags()
+
     return render(
         request,
         "blog/post_list.html",
