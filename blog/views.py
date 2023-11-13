@@ -36,7 +36,7 @@ def tag_filter(request):
     for tag in selected_tags:
         posts = posts.filter(tags__name=tag)
 
-    tags = Tag.get_all_tags()
+    tags = Tag.objects.all().order_by("name")
 
     request.session["selected_tags"] = selected_tags
 
