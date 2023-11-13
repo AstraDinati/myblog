@@ -729,7 +729,7 @@ legend {
 }
 
 body {
-  background-image: url('../background.jpg');
+  background-image: url('../space.gif');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -811,6 +811,7 @@ body {
 .nav-link-conteiner {
   display: flex;
   justify-content: center;
+  margin-top: 30px;
 }
 
 .nav-link {
@@ -824,4 +825,34 @@ body {
 .nav-link:hover {
   color: #ddd;
   /* Либо другой светло-серый цвет */
+}
+
+.text-about {
+  font-size: 1.1rem;
+  line-height: 1.1rem;
+}
+
+/* blog/static/css/styles.css */
+
+
+.social-links {
+  position: fixed;
+  top: 0;
+  right: 0;
+  transform: translateX(-50%);
+  margin-top: 20px;
+  /* Добавьте нужный отступ снизу */
+}
+
+.social-links a {
+  margin-right: 10px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 25px;
+  /* Размер иконок */
+  transition: color 0.3s ease-in-out;
+}
+
+.social-links a:hover {
+  color: #007bff;
 }

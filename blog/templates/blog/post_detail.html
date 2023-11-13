@@ -17,7 +17,7 @@
     <div class="post bg-white p-6 shadow-md lg:w-1/2 mx-auto">
         <h1 class=" text-3xl font-bold mb-2">{{ post.title }}</h1>
         <p class="text-gray-600 mb-4">{{ post.pub_date }}</p>
-        <p class="text-gray-800">{{ post.content|linebreaks }}</p>
+        <p class="text-gray-800 leading-15">{{ post.content|linebreaks }}</p>
         {% if post.photo %}
         <img src="{{ post.photo.url }}" alt="{{ post.title }}" class="mb-4">
         {% endif %}

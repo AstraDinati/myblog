@@ -10,6 +10,8 @@
     <title>My Blog</title>
     <!-- Подключение стилей Tailwind CSS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!-- Подключение стилей Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body class="bg-gray-100">
@@ -22,6 +24,12 @@
 
         {% block content %}
         {% endblock %}
+
+        <div class="social-links">
+            <a href="https://www.instagram.com/to.nut/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://t.me/teomirata" target="_blank"><i class="fab fa-telegram"></i></a>
+            <!-- Добавьте другие социальные сети по аналогии -->
+        </div>
 
     </div>
 
