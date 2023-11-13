@@ -14,6 +14,10 @@ def post_detail(request, pk):
     return render(request, "blog/post_detail.html", {"post": post})
 
 
+def about(request):
+    return render(request, "blog/about.html")
+
+
 def tag_filter(request):
     tag_name = request.GET.get("tag")
     action = request.GET.get("action")
@@ -27,10 +31,10 @@ def tag_filter(request):
         else:
             selected_tags = [tag_name]
 
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by("-pub_date")
 
-    if selected_tags:
-        posts = posts.filter(tags__name__in=selected_tags)
+    for tag in selected_tags:
+        posts = posts.filter(tags__name=tag)
 
     tags = Tag.get_all_tags()
 

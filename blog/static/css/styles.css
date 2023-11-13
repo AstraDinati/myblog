@@ -807,3 +807,21 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
+
+.nav-link-conteiner {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 50px;
+  margin-left: 40px;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #ddd;
+  /* Либо другой светло-серый цвет */
+}

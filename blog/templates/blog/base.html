@@ -13,6 +13,11 @@
 </head>
 
 <body class="bg-gray-100">
+    <div class="nav-link-conteiner">
+        <a href="{% url 'post_list' %}" class="nav-link">Blog</a>
+        <a href="{% url 'about' %}" class="nav-link">About</a>
+    </div>
+
     <div class="container">
 
         {% block content %}
