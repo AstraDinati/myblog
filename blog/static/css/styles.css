@@ -729,7 +729,7 @@ legend {
 }
 
 body {
-  background-image: url('../space.gif');
+  background-image: url('../7.gif');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -811,7 +811,7 @@ body {
 .nav-link-conteiner {
   display: flex;
   justify-content: center;
-  margin-top: 30px;
+  /* margin-top: 30px; */
 }
 
 .nav-link {
