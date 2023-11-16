@@ -24,6 +24,3 @@ db.sqlite3
 
 # Local settings
 myblog/settings/local.py
-**/settings.py
-myblog/settings.py
-myblog/myblog/settings.py
