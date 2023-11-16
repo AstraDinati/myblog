@@ -2,10 +2,25 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post, Tag
 
+# blog/views.py
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 def post_list(request):
     posts = Post.objects.all().order_by("-pub_date")
     tags = Tag.get_all_tags()
+
+    # Добавляем пагинацию
+    paginator = Paginator(posts, 10)  # Показывать 10 постов на каждой странице
+    page = request.GET.get("page")
+
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+
     return render(request, "blog/post_list.html", {"posts": posts, "tags": tags})
 
 
@@ -35,6 +50,17 @@ def tag_filter(request):
 
     for tag in selected_tags:
         posts = posts.filter(tags__name=tag)
+
+    # Добавляем пагинацию
+    paginator = Paginator(posts, 10)  # Показывать 10 постов на каждой странице
+    page = request.GET.get("page")
+
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
 
     tags = Tag.objects.all().order_by("name")
 

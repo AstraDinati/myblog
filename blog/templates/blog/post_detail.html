@@ -22,7 +22,11 @@
         <img src="{{ post.photo.url }}" alt="{{ post.title }}" class="mb-4">
         {% endif %}
         <br>
-        <p>Tags: {% for tag in post.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+        <p>Tags: {% for tag in post.tags.all %}
+            <a href="{% url 'tag_filter' %}?tag={{ tag.name }}"
+                class="tag-link hover:bg-gray-200 hover:text-blue-500 hover:underline">{{ tag.name }}</a>
+            {% if not forloop.last %}, {% endif %}{% endfor %}
+        </p>
     </div>
 </div>
 {% endblock %}

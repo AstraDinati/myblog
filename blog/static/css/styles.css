@@ -749,7 +749,6 @@ body {
 .container {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
   min-width: 100%;
   padding: 20px;
 }
@@ -762,6 +761,61 @@ body {
   animation: fadeInUp 0.5s ease-in-out;
 }
 
+
+/* Стили для пагинации */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination a,
+.pagination span {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.493);
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.pagination a:hover {
+  background-color: rgba(255, 255, 255, 0.767);
+}
+
+.pagination .current {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.pagination .disabled {
+  color: #ccc;
+  pointer-events: none;
+}
+
+/* Стили для стрелочек */
+.pagination .arrow,
+.pagination .double-arrow {
+  font-size: 18px;
+}
+
+.pagination .double-arrow {
+  font-size: 24px;
+}
+
+/* Используйте эти стили для обозначения "недоступных" стрелочек, если необходимо */
+.pagination .disabled-arrow {
+  color: #ccc;
+  pointer-events: none;
+}
+
+
+
 @keyframes fadeInUp {
   0% {
     opacity: 0;
@@ -773,6 +827,7 @@ body {
     transform: translateY(0);
   }
 }
+
 
 .hover\:text-gray-700:hover {
   --tw-text-opacity: 1;
@@ -823,7 +878,7 @@ body {
 }
 
 .nav-link:hover {
-  color: #ddd;
+  color: #ddddddbe;
   /* Либо другой светло-серый цвет */
 }
 
