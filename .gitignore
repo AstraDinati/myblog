@@ -23,5 +23,5 @@ db.sqlite3
 /myblog/logs/
 
 # Local settings
-/myblog/myblog/settings/local.py
+myblog/settings/local.py
 **/settings.py
