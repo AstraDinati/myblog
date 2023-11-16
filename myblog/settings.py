@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "https://myblog-2501-d341c6cc8cca.herokuapp.com",
+    "myblog-2501-d341c6cc8cca.herokuapp.com",
     "vadimthoughts.herokuapp.com",
 ]
 
