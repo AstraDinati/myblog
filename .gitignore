@@ -12,7 +12,7 @@ __pycache__/
 /node_modules
 
 media/
-/myblog/myblog/settings.py
+
 # Database
 db.sqlite3
 /myblog/myblog/__pycache__/
@@ -25,3 +25,5 @@ db.sqlite3
 # Local settings
 myblog/settings/local.py
 **/settings.py
+myblog/settings.py
+myblog/myblog/settings.py
