@@ -31,7 +31,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     "myblog-2501-d341c6cc8cca.herokuapp.com",
-    "vadimthoughts.herokuapp.com",
+    "www.vadimthoughts.pro",
 ]
 
 
