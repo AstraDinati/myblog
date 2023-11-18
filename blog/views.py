@@ -1,14 +1,12 @@
 # blog/views.py
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Tag
-
-# blog/views.py
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def post_list(request):
     posts = Post.objects.all().order_by("-pub_date")
-    tags = Tag.get_all_tags()
+    tags = Tag.objects.all().order_by("name")
 
     # Добавляем пагинацию
     paginator = Paginator(posts, 10)  # Показывать 10 постов на каждой странице
@@ -33,6 +31,10 @@ def about(request):
     return render(request, "blog/about.html")
 
 
+def test(request):
+    return render(request, "blog/test.html")
+
+
 def tag_filter(request):
     tag_name = request.GET.get("tag")
     action = request.GET.get("action")
@@ -44,12 +46,21 @@ def tag_filter(request):
         elif action == "remove" and tag_name in selected_tags:
             selected_tags.remove(tag_name)
         else:
-            selected_tags = [tag_name]
+            # Если тег уже выбран, сбросить его
+            if tag_name in selected_tags:
+                selected_tags.remove(tag_name)
+            else:
+                # Если тег не выбран, добавить его к выбранным тегам
+                selected_tags.append(tag_name)
 
     posts = Post.objects.all().order_by("-pub_date")
 
     for tag in selected_tags:
         posts = posts.filter(tags__name=tag)
+
+    if "selected_tags" in request.GET:
+        request.session["selected_tags"] = []
+        return redirect(request.path)
 
     # Добавляем пагинацию
     paginator = Paginator(posts, 10)  # Показывать 10 постов на каждой странице
