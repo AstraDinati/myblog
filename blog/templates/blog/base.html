@@ -25,16 +25,16 @@
         <div class="nav-link-container">
             <a href="{% url 'post_list' %}" class="nav-link">Blog</a>
             <a href="{% url 'about' %}" class="nav-link">About</a>
+            <!-- социальные сети -->
+            <div class="social-links">
+                <a href="https://www.instagram.com/to.nut/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://t.me/teomirata" target="_blank"><i class="fab fa-telegram"></i></a>
+            </div>
         </div>
     </div>
     <div class="content-container">
         {% block content %}
         {% endblock %}
-    </div>
-    <!-- социальные сети -->
-    <div class="social-links">
-        <a href="https://www.instagram.com/to.nut/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://t.me/teomirata" target="_blank"><i class="fab fa-telegram"></i></a>
     </div>
 
 
