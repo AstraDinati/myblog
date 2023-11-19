@@ -165,11 +165,6 @@ body {
     /* или другое значение, чтобы добавить промежуток между тегами */
 }
 
-.tag-list {
-    display: flex;
-    flex-wrap: wrap;
-}
-
 .nav-link-conteiner {
     display: flex;
     justify-content: center;
