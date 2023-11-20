@@ -699,6 +699,10 @@ body {
   display: inline-block;
 }
 
+.tag-link:hover {
+  color: #007bff;
+}
+
 
 /* Стили для пагинации */
 .pagination {
@@ -771,9 +775,9 @@ body {
   color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
-.hover\:underline:hover {
+/* .hover\:underline:hover {
   text-decoration-line: underline;
-}
+} */
 
 /* стиль навигационных ссылок Blog и About */
 
@@ -793,7 +797,6 @@ body {
 
 .nav-link:hover {
   color: #007bff;
-  /* Либо другой светло-серый цвет */
 }
 
 /* стиль страницы about */
@@ -836,6 +839,11 @@ body {
   animation: fadeInUp 0.5s ease-in-out;
 }
 
+.post-title:hover {
+  color: #007bff;
+}
+
+
 .about {
   background-color: rgba(255, 255, 255, 0.8);
   padding: 20px;
@@ -861,31 +869,31 @@ body {
 
 .tag-cloud-item {
   display: inline-block;
-  margin: 0 8px 8px 0;
+  margin: 0 10px 10px 0;
   /* Задайте нужные отступы между тегами */
-  font-size: 14px;
+  font-size: 18px;
   /* Задайте желаемый размер шрифта */
 }
 
 .tag-cloud-item a {
   text-decoration: none;
-  color: #ffffff;
+  color: #a5a5a5;
   /* Задайте цвет текста тега */
 }
 
 .tag-cloud-item a:hover {
-  background-color: rgba(70, 88, 37, 0.658);
-  padding: 4px 8px;
-  border-radius: 17px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: rgb(66, 66, 66) !important;
+  padding: 2px 4px;
+  border-radius: 14px;
 }
 
 
 .selected-tag {
-  background-color: rgba(70, 88, 37, 0.658);
-  color: white;
-  padding: 4px 8px;
-  margin-right: 4px;
-  border-radius: 17px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: rgb(66, 66, 66) !important;
+  padding: 2px 4px;
+  border-radius: 14px;
 }
 
 .content-container {
@@ -934,6 +942,12 @@ body {
 
 .blog-flex__aside {
   color: #ffffff;
+  font-size: 24px;
+}
+
+
+.blog-flex__aside a:hover {
+  color: rgb(207, 86, 86);
 }
 
 /* медиа */
@@ -1059,13 +1073,13 @@ body {
 @media screen and (min-width: 1400px) {
   .blog-flex__section {
     padding-right: 1%;
-    margin-left: 10%;
+    margin-left: 15%;
   }
 
   .blog-flex__aside {
     width: 335px;
     padding-left: 1%;
-    margin-right: 10%;
+    margin-right: 15%;
     color: #ffffff;
   }
 }

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger Menu Test</title>
+    <!-- Подключение стилей Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Ваши стили здесь */
+        .bg {
+            background-color: black;
+        }
+
+        .header-burger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 2;
+        }
+
+        .nav-link-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background-color: #333;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 10%;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 1;
+            overflow: hidden;
+            transition: height 0.3s ease;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        @media only screen and (max-width: 1100px) {
+            .header-burger {
+                display: block;
+            }
+
+            .nav-link {
+                display: none;
+            }
+
+            .nav-link-container {
+                height: 10%;
+                overflow: hidden;
+            }
+
+            .nav-link-container.show-mobile {
+                height: 100%;
+                width: 30%;
+                flex-direction: column;
+                /* Добавлено для вертикального столбца на маленьких экранах */
+            }
+
+            .nav-link-container.show-mobile a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            .header-burger {
+                display: block;
+            }
+
+            .nav-link {
+                display: none;
+            }
+
+            .nav-link-container {
+                height: 10%;
+                overflow: hidden;
+            }
+
+            .nav-link-container.show-mobile {
+                height: 40%;
+                width: 100%;
+                flex-direction: row;
+                /* Добавлено для вертикального столбца на маленьких экранах */
+            }
+
+            .nav-link-container.show-mobile a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg">
+    <div class="header-container">
+        <div class="header-burger" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-link-container">
+            <a href="#" class="nav-link">Link 1</a>
+            <a href="#" class="nav-link">Link 2</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleMobileMenu() {
+            var navLinkContainer = document.querySelector('.nav-link-container');
+            navLinkContainer.classList.toggle('show-mobile');
+        }
+    </script>
+</body>
+
+</html>
