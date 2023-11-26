@@ -1008,14 +1008,14 @@ body {
 
 .post-description {
   max-height: 0;
-  transition: max-height 2s ease-in, opacity 0.2s ease-in, transform 0.3s ease-in;
-  opacity: 0;
+  transition: max-height 0.3s ease-in, opacity 0.2s ease-in, transform 0.3s ease-in;
   transform: translateY(20px);
+  opacity: 0;
   will-change: opacity, transform, max-height;
 }
 
 .post:hover .post-description {
-  max-height: 1000px;
+  max-height: 70px;
   opacity: 1;
   transform: translateY(0);
 }
