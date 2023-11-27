@@ -5,6 +5,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def post_list(request):
+    active_link = "post_list"
     posts = Post.objects.all().order_by("-pub_date")
     tags = Tag.objects.all().order_by("name")
 
@@ -19,7 +20,11 @@ def post_list(request):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
 
-    return render(request, "blog/post_list.html", {"posts": posts, "tags": tags})
+    return render(
+        request,
+        "blog/post_list.html",
+        {"posts": posts, "tags": tags, "active_link": active_link},
+    )
 
 
 def post_detail(request, pk):
@@ -28,7 +33,8 @@ def post_detail(request, pk):
 
 
 def about(request):
-    return render(request, "blog/about.html")
+    active_link = "about"
+    return render(request, "blog/about.html", {"active_link": active_link})
 
 
 def test(request):
@@ -39,6 +45,7 @@ def tag_filter(request):
     tag_name = request.GET.get("tag")
     action = request.GET.get("action")
     selected_tags = request.session.get("selected_tags", [])
+    is_tag_container_show = True
 
     if tag_name:
         if action == "add" and tag_name not in selected_tags:
@@ -62,8 +69,7 @@ def tag_filter(request):
         request.session["selected_tags"] = []
         return redirect(request.path)
 
-    # Добавляем пагинацию
-    paginator = Paginator(posts, 10)  # Показывать 10 постов на каждой странице
+    paginator = Paginator(posts, 10)
     page = request.GET.get("page")
 
     try:
@@ -77,8 +83,16 @@ def tag_filter(request):
 
     request.session["selected_tags"] = selected_tags
 
+    if selected_tags == []:
+        is_tag_container_show = False
+
     return render(
         request,
         "blog/post_list.html",
-        {"posts": posts, "tags": tags, "selected_tags": selected_tags},
+        {
+            "posts": posts,
+            "tags": tags,
+            "selected_tags": selected_tags,
+            "is_tag_container_show": is_tag_container_show,
+        },
     )

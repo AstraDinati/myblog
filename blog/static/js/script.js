@@ -1,5 +1,13 @@
 // script.js
 
+function toggleTagsCloud() {
+    var tagCont = document.querySelector('.tag-container');
+    tagCont.classList.toggle('show');
+
+    toggleMobileMenu();
+}
+
+
 function toggleMobileMenu() {
     var navMenu = document.querySelector('.nav-menu');
     var socLin = document.querySelector('.social-links');
@@ -22,12 +30,22 @@ document.addEventListener('click', function (event) {
     }
 });
 
-function toggleTagsCloud() {
-    var tagCont = document.querySelector('.tag-container');
-    tagCont.classList.toggle('show-mobile');
 
-    toggleMobileMenu();
-}
+// Добавляем слушатель событий для закрытия меню при клике вне его пределов
+document.addEventListener('click', function (event) {
+    var tagCont = document.querySelector('.tag-container');
+    var targetElement = event.target;
+
+    // Проверяем, является ли кликнутый элемент частью бургера или меню
+    var isClickInsideTagList = targetElement.closest('.tag-list');
+    var isClickInsideContainer = targetElement.closest('.tag-container');
+
+    if (!isClickInsideTagList && !isClickInsideContainer) {
+        // Закрываем меню, если клик был вне его пределов
+        tagCont.classList.remove('show');
+    }
+});
+
 
 // Добавьте следующий код для закрытия панели тегов при клике за её пределами
 document.addEventListener('click', function (event) {
@@ -45,3 +63,4 @@ document.addEventListener('click', function (event) {
         tagCont.classList.remove('show-mobile');
     }
 });
+

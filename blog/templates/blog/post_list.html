@@ -3,12 +3,34 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+<!-- облако тегов -->
+<div class="tag-container{% if is_tag_container_show %} show{% endif %}">
+    <a href="{% url 'tag_filter' %}?{% if selected_tags %}selected_tags={{ selected_tags|join:',' }}{% endif %}"
+        class="tag-reset">
+        Reset filters
+    </a>
+    <ul class="tag-cloud">
+        {% for tag in tags %}
+        <li class="tag-cloud-item">
+            <a href="{% url 'tag_filter' %}?tag={{ tag.name }}"
+                class="tag-link  {% if tag.name in selected_tags %}selected-tag{% endif %}">
+                {{ tag.name }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<h1 class="post-h">Posts</h1>
+<div class="tag-menu">
+    <a href="#" class="tag-list" onclick="toggleTagsCloud()">Tags</a>
+</div>
 <div class="blog-flex">
     <!-- Список постов -->
     <div class="blog-flex__section">
         {% for post in posts %}
         {% if post.photo %}
         <div class="post" style="background-image: url('{{ post.photo.url }}'); background-size: cover;">
+            <a class="post-a" href="{% url 'post_detail' pk=post.pk %}"></a>
             <div class="post-content">
                 <div class="post-overlay">
                     <h2 class="post-title text-2xl font-bold mb-2"><a href="{% url 'post_detail' pk=post.pk %}">
@@ -24,6 +46,7 @@
                     </div>
                 </div>
             </div>
+            </a>
         </div>
         {% endif %}
         {% endfor %}
