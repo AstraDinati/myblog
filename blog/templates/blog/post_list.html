@@ -28,8 +28,7 @@
     <!-- Список постов -->
     <div class="blog-flex__section">
         {% for post in posts %}
-        {% if post.photo %}
-        <div class="post" style="background-image: url('{{ post.photo.url }}'); background-size: cover;">
+        <div class="post" style="background-image: url('{{ post.cover_photo.url }}'); background-size: cover;">
             <a class="post-a" href="{% url 'post_detail' pk=post.pk %}"></a>
             <div class="post-content">
                 <div class="post-overlay">
@@ -48,7 +47,6 @@
             </div>
             </a>
         </div>
-        {% endif %}
         {% endfor %}
     </div>
 

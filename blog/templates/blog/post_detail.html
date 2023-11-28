@@ -6,25 +6,49 @@
 
 
 <div class="post-flex">
-    <a href="{% url 'post_list' %}" class="text-gray-500 hover:text-gray-700 ml-4">
-        <svg width="48" height="48" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-            xmlns="http://www.w3.org/2000/svg" style="opacity: 0.9; stroke: lightgray;">
-            <path d="M15 18L9 12L15 6" stroke-width="2" strokeLinecap="round" strokeLinejoin="round"></path>
-        </svg>
-    </a>
-
-    <div class="post bg-white p-6 shadow-md lg:w-1/2 mx-auto">
-        <h1 class=" text-3xl font-bold mb-2">{{ post.title }}</h1>
-        <p class="text-gray-600 mb-4">{{ post.pub_date }}</p>
-        <p class="text-gray-800 leading-15">{{ post.content|linebreaks }}</p>
-        {% if post.photo %}
-        <img src="{{ post.photo.url }}" alt="{{ post.title }}" class="mb-4">
-        {% endif %}
-        <br>
-        <p>Tags: {% for tag in post.tags.all %}
-            <a href="{% url 'tag_filter' %}?tag={{ tag.name }}" class="tag-link">{{ tag.name }}</a>
-            {% if not forloop.last %}, {% endif %}{% endfor %}
-        </p>
+    <div class="post-detail">
+        <div class="post-cover" style="background-image: url('{{ post.cover_photo.url }}'); background-size: cover;">
+            <div class="cover-content">
+                <h1 class="post-detail-h">{{ post.title }}</h1>
+                <a class="post-autor" href="{% url 'about' %}">Vadim Lebedev</a>
+                <p class="post-pub_date">{{ post.pub_date }}</p>
+            </div>
+        </div>
+        <div class="post-div">
+            {{ post.content|linebreaksbr|safe }}
+        </div>
+        <div class="post_photo">
+            <img src="{{ post.post_photo.url }}" alt="{{ post.title }}">
+        </div>
+        <div class="post_tags">
+            <p>{% for tag in post.tags.all %}
+                <a href="{% url 'tag_filter' %}?tag={{ tag.name }}" class="post-tag">{{ tag.name }}</a>
+                {% endfor %}
+            </p>
+        </div>
     </div>
+    <div class="post-navigation-button">
+        <!-- кнопка нового поста -->
+        {% if post.get_next_by_pub_date %}
+        <a href="{% url 'post_detail' pk=post.get_next_by_pub_date.pk %}" class="newer-post">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 18L9 12L15 6" stroke-width="2" strokeLinecap="round" strokeLinejoin="round"></path>
+            </svg>
+        </a>
+        {% else %}
+        <p class="no-newer-posts">No more newer posts</p>
+        {% endif %}
+        <!-- кнопка старого поста -->
+        {% if post.get_previous_by_pub_date %}
+        <a href="{% url 'post_detail' pk=post.get_previous_by_pub_date.pk %}" class="older-post">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 6L15 12L9 18" stroke-width="2" strokeLinecap="round" strokeLinejoin="round"></path>
+            </svg>
+        </a>
+        {% else %}
+        <p class="no-older-posts">No more older posts</p>
+        {% endif %}
+    </div>
+
 </div>
 {% endblock %}

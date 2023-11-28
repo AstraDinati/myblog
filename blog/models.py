@@ -1,6 +1,4 @@
-# blog/models.py
 from django.db import models
-from taggit.managers import TaggableManager
 
 
 class Tag(models.Model):
@@ -17,8 +15,9 @@ class Tag(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
+    cover_photo = models.ImageField(upload_to="post_covers/", null=True, blank=True)
+    post_photo = models.ImageField(upload_to="post_photos/", null=True, blank=True)
     tags = models.ManyToManyField(Tag)
-    photo = models.ImageField(upload_to="post_photos/", null=True, blank=True)
     pub_date = models.DateTimeField("date published")
 
     def __str__(self):
