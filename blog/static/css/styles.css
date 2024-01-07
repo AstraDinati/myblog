@@ -900,7 +900,10 @@ body {
 /* тeг-контейнер */
 
 .tag-container {
+  position: relative;
   display: none;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   background-color: rgb(255, 255, 255);
   position: fixed;
@@ -914,17 +917,25 @@ body {
 }
 
 .tag-container.show {
-  display: block;
+  display: flex;
   top: 60px;
-  height: 15%;
+  height: 200px;
   width: 100%;
 }
 
 .tag-cloud {
+  align-content: center;
   list-style: none;
   padding: 0;
-  margin-top: 20px;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* Центрирование элементов по горизонтали */
+  align-items: center;
+  /* Центрирование элементов по вертикали */
+  width: 100%;
+  height: 100%;
+  /* Ширина списка, чтобы он занимал всю ширину контейнера */
 }
 
 .tag-cloud-item {
@@ -938,12 +949,30 @@ body {
   color: #a5a5a5;
 }
 
+
+.close-tag-container {
+  position: absolute;
+  display: block;
+  right: 20px;
+  top: 20px;
+}
+
+.close-tag-container button {
+  transition: color 0.3s ease-in-out;
+}
+
+.close-tag-container button:hover {
+  color: rgb(206, 87, 87)
+}
+
 .tag-cloud-item a:hover {
   color: #007bff;
   animation: pulse 0.5s infinite;
 }
 
 .tag-reset {
+  position: absolute;
+  display: block;
   color: black;
   font-weight: bold;
 }
@@ -1439,7 +1468,7 @@ body {
   .tag-container.show {
     display: block;
     top: 60px;
-    height: 15%;
+    height: 200px;
     width: 100%;
     border-bottom: 1px solid #ccc;
   }
@@ -1779,7 +1808,7 @@ body {
     display: block;
     top: 90px;
     width: 100%;
-    height: 15%;
+    height: 200px;
     flex-direction: column;
     border-bottom: 1px solid #ccc;
   }

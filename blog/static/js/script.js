@@ -7,7 +7,6 @@ function toggleTagsCloud() {
     toggleMobileMenu();
 }
 
-
 function toggleMobileMenu() {
     var navMenu = document.querySelector('.nav-menu');
     navMenu.classList.toggle('show-mobile');
