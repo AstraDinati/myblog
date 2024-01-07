@@ -719,7 +719,7 @@ body {
   border-radius: 50%;
   background-color: rgba(148, 148, 148, 0.493);
   text-decoration: none;
-  color: #333;
+  color: #ececec;
   transition: background-color 0.3s ease;
 }
 
@@ -1322,6 +1322,14 @@ body {
   background-color: #007bff;
 }
 
+.post-div p a {
+  transition: color 0.3s ease-in-out;
+}
+
+.post-div p a:hover {
+  color: #007bff;
+}
+
 .nav-menu {
   display: none;
   align-items: center;
@@ -1467,9 +1475,10 @@ body {
     height: 75px;
     position: relative;
     right: 0;
-    border-left: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+  }
+
+  .older-post svg {
+    margin-left: 20%;
   }
 
   .no-older-posts {
@@ -1477,9 +1486,6 @@ body {
     height: 75px;
     position: relative;
     right: 0;
-    border-left: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
   }
 
   .newer-post {
@@ -1487,9 +1493,10 @@ body {
     height: 75px;
     position: relative;
     left: 0;
-    border-right: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+  }
+
+  .newer-post svg {
+    margin-right: 20%;
   }
 
   .no-newer-posts {
@@ -1497,9 +1504,6 @@ body {
     height: 75px;
     position: relative;
     left: 0;
-    border-right: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
   }
 
   .post-flex {
