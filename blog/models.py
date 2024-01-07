@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 
 class Tag(models.Model):
@@ -14,7 +15,7 @@ class Tag(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    content = models.TextField()
+    content = RichTextField()
     cover_photo = models.ImageField(upload_to="post_covers/", null=True, blank=True)
     post_photo = models.ImageField(upload_to="post_photos/", null=True, blank=True)
     tags = models.ManyToManyField(Tag)

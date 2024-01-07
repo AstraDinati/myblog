@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="post-div">
-            {{ post.content|linebreaksbr|safe }}
+            {{ post.content|safe }}
         </div>
         <div class="post_photo">
             <img src="{{ post.post_photo.url }}" alt="{{ post.title }}">
