@@ -44,7 +44,7 @@
                         {% if not forloop.last %}, {% endif %}{% endfor %}
                     </p>
                     <div class="post-description">
-                        {{ post.content|truncatewords:20|linebreaks }}
+                        {{ post.content|truncatewords:20|safe }}
                     </div>
                 </div>
             </div>
