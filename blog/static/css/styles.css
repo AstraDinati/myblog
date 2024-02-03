@@ -39,6 +39,8 @@ html {
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;
+  background-color: var(--background-color);
+  /* background-size: cover; */
   /* font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
   font-feature-settings: normal;
   font-variation-settings: normal;
@@ -46,16 +48,88 @@ html {
   margin: 0;
 }
 
-/*
-1. Remove the margin in all browsers.
-2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
-*/
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  /* background-repeat: no-repeat;
+  background-size: cover; */
+  background-position: center;
+  /* background-attachment: inherit; */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
 
 body {
   margin: 0;
   padding: 0;
   line-height: inherit;
 }
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+
+.theme-toggle-btn {
+  position: absolute;
+  top: 33px;
+  /* Регулируйте отступ сверху по необходимости */
+  right: 120px;
+  /* Регулируйте отступ справа по необходимости */
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.theme-toggle-btn i {
+  display: none;
+  font-size: 25px;
+}
+
+[data-theme="light"] .theme-toggle-btn .fa-moon,
+[data-theme="dark"] .theme-toggle-btn .fa-sun {
+  display: inline;
+}
+
+:root {
+  /* Тёмный для тёмной темы */
+  --background-color: #1f1f1f;
+  /* Белый для тёмной темы */
+  --text-color: #d4d4d4;
+  /* Светло серый цвет текста поста для тёмной темы */
+  --post-text-color: #a3a3a3;
+  --borders: #3f3f3f;
+  --nav-link-color: #d4d4d4;
+  --post-h-color: #d4d4d4;
+  --background-color-pagination-a-hover: rgba(51, 51, 51, 0.767);
+  --background-color-pagination-current: rgba(80, 80, 80, 0.8);
+  --color-text-about: #c7c7c7;
+  --color-h-about: #c2c2c2;
+  --background-color-about: #1b5b5fd5;
+}
+
+
+[data-theme="light"] {
+  /* Белый фон для светлой темы */
+  --background-color: #ffffff;
+  /* Чёрный фон для светлой темы */
+  --text-color: #1f1f1f;
+  /* Тёмно серый цвет текста поста для светлой темы */
+  --post-text-color: #3d3d3d;
+  --borders: #ccc;
+  --nav-link-color: #494949;
+  --post-h-color: #3f3f3f;
+  --background-color-pagination-a-hover: rgba(128, 128, 128, 0.767);
+  --background-color-pagination-current: rgba(184, 184, 184, 0.8);
+  --color-text-about: #3d3d3d;
+  --color-h-about: #505050;
+  --background-color-about: #4b959971;
+}
+
 
 /*
 1. Add the correct height in Firefox.
@@ -678,19 +752,6 @@ legend {
   box-sizing: border-box;
 }
 
-body {
-  background-color: #fff;
-  /* background-image: url('../7.gif'); */
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-
-
 /* Стили для пагинации */
 
 .pagination-container {
@@ -717,18 +778,19 @@ body {
   text-align: center;
   line-height: 30px;
   border-radius: 50%;
-  background-color: rgba(148, 148, 148, 0.493);
+  background-color: var(--background-color);
+  color: var(--text-color);
   text-decoration: none;
-  color: #ececec;
+  /* color: #ececec; */
   transition: background-color 0.3s ease;
 }
 
 .pagination a:hover {
-  background-color: rgba(128, 128, 128, 0.767);
+  background-color: var(--background-color-pagination-a-hover);
 }
 
 .pagination .current {
-  background-color: rgba(158, 158, 158, 0.8);
+  background-color: var(--background-color-pagination-current);
 }
 
 .pagination .disabled {
@@ -833,7 +895,7 @@ body {
 
 .social-links a {
   margin-right: 10px;
-  color: #494949;
+  color: var(--nav-link-color);
   text-decoration: none;
   font-size: 25px;
   transition: color 0.3s ease-in-out;
@@ -858,7 +920,7 @@ body {
 }
 
 .backgroung-about {
-  background-color: #4b959971;
+  background-color: var(--background-color-about);
   width: 60%;
   height: 70%;
   margin-top: 10%;
@@ -876,13 +938,13 @@ body {
   margin: 20px 0 20px 40px;
   font-size: 19px;
   font-family: 'Rosario', sans-serif;
-  color: #3d3d3d;
+  color: var(--color-text-about);
 }
 
 .h-about {
   font-size: 35px;
   font-family: 'Noto Serif Display', serif;
-  color: #505050;
+  color: var(--color-h-about);
   margin: 20px 0 20px 40px;
 }
 
@@ -905,7 +967,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--background-color);
+  color: var(--text-color);
   position: fixed;
   top: 0;
   box-sizing: border-box;
@@ -913,7 +976,7 @@ body {
   overflow: hidden;
   transition: height 0.3s ease;
   top: 60px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--borders);
 }
 
 .tag-container.show {
@@ -973,7 +1036,6 @@ body {
 .tag-reset {
   position: absolute;
   display: block;
-  color: black;
   font-weight: bold;
 }
 
@@ -1004,7 +1066,7 @@ body {
   font-family: 'Noto Serif Malayalam', serif;
   display: inline-block;
   padding: 5px 20px 5px 20px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--borders);
   /* margin-left: 40px; */
   margin-bottom: 20px;
 }
@@ -1032,7 +1094,8 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--background-color);
+  color: var(--text-color);
   padding: 10px;
   position: fixed;
   font-family: 'Hedvig Letters Serif', serif;
@@ -1043,11 +1106,11 @@ body {
   z-index: 1;
   overflow: hidden;
   transition: height 0.3s ease;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--borders);
 }
 
 .nav-link {
-  color: #494949;
+  color: var(--nav-link-color);
   text-decoration: none;
   font-size: 50px;
   margin-left: 40px;
@@ -1056,7 +1119,6 @@ body {
 
 .nav-link:hover {
   color: #007bff;
-  animation: pulse 3s infinite;
 }
 
 .nav-link.active {
@@ -1123,7 +1185,7 @@ body {
 .post-h {
   font-size: 45px;
   font-family: 'Noto Serif Display', serif;
-  color: #3f3f3f;
+  color: var(--post-h-color);
   text-align: center;
   margin-top: 40px;
   margin-bottom: 40px;
@@ -1271,7 +1333,7 @@ body {
   margin: 40px 0 40px 0;
   font-size: 19px;
   font-family: 'Rosario', sans-serif;
-  color: #3d3d3d;
+  color: var(--post-text-color);
 }
 
 .post-cover {
@@ -1363,7 +1425,8 @@ body {
 .nav-menu {
   display: none;
   align-items: center;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--background-color);
+  color: var(--text-color);
   padding: 10px;
   position: fixed;
   top: 0;
@@ -1442,12 +1505,18 @@ body {
     display: none;
   }
 
+  .theme-toggle-btn {
+    position: absolute;
+    top: 18px;
+    right: 100px;
+  }
+
   .nav-menu.show-mobile {
     display: block;
     top: 60px;
     height: 300px;
     width: 100%;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--borders);
   }
 
   .nav-menu.show-mobile a {
@@ -1470,7 +1539,7 @@ body {
     top: 60px;
     height: 200px;
     width: 100%;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--borders);
   }
 
   .pagination {
@@ -1555,7 +1624,6 @@ body {
   }
 
   .backgroung-about {
-    background-color: #4b959971;
     width: 90%;
     height: 70%;
     margin-top: 4%;
@@ -1572,15 +1640,9 @@ body {
 
   .text-about {
     margin: 20px 0 20px 0;
-    font-size: 19px;
-    font-family: 'Rosario', sans-serif;
-    color: #3d3d3d;
   }
 
   .h-about {
-    font-size: 35px;
-    font-family: 'Noto Serif Display', serif;
-    color: #505050;
     margin: 20px 0 20px 0;
   }
 
@@ -1637,6 +1699,13 @@ body {
     overflow: hidden;
   }
 
+  .theme-toggle-btn {
+    position: absolute;
+    top: 27px;
+    right: 100px;
+  }
+
+
   .content-container {
     position: relative;
     top: 80px;
@@ -1648,7 +1717,7 @@ body {
     height: 100%;
     width: 240px;
     flex-direction: column;
-    border-left: 1px solid #ccc;
+    border-left: 1px solid var(--borders);
   }
 
   .tag-container.show {
@@ -1658,7 +1727,7 @@ body {
     width: 240px;
     right: 0;
     flex-direction: column;
-    border-left: 1px solid #ccc;
+    border-left: 1px solid var(--borders);
   }
 
   .nav-menu.show-mobile a {
@@ -1687,9 +1756,6 @@ body {
     height: 150px;
     position: relative;
     right: 0;
-    border-left: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
   }
 
   .no-older-posts {
@@ -1697,9 +1763,6 @@ body {
     height: 150px;
     position: relative;
     right: 0;
-    border-left: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
   }
 
   .newer-post {
@@ -1707,9 +1770,6 @@ body {
     height: 150px;
     position: relative;
     left: 0;
-    border-right: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
   }
 
   .no-newer-posts {
@@ -1717,9 +1777,6 @@ body {
     height: 150px;
     position: relative;
     left: 0;
-    border-right: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
   }
 
   .post-flex {
@@ -1738,7 +1795,6 @@ body {
   }
 
   .backgroung-about {
-    background-color: #4b959971;
     width: 60%;
     height: 70%;
     margin-top: 10%;
@@ -1754,15 +1810,9 @@ body {
 
   .text-about {
     margin: 20px 0 20px 40px;
-    font-size: 19px;
-    font-family: 'Rosario', sans-serif;
-    color: #3d3d3d;
   }
 
   .h-about {
-    font-size: 35px;
-    font-family: 'Noto Serif Display', serif;
-    color: #505050;
     margin: 20px 0 20px 40px;
   }
 
@@ -1810,7 +1860,7 @@ body {
     width: 100%;
     height: 200px;
     flex-direction: column;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--borders);
   }
 
   .content-container {
@@ -1875,7 +1925,6 @@ body {
   }
 
   .backgroung-about {
-    background-color: #4b959971;
     width: 60%;
     height: 70%;
     margin-top: 10%;
@@ -1891,15 +1940,9 @@ body {
 
   .text-about {
     margin: 20px 0 20px 40px;
-    font-size: 19px;
-    font-family: 'Rosario', sans-serif;
-    color: #3d3d3d;
   }
 
   .h-about {
-    font-size: 35px;
-    font-family: 'Noto Serif Display', serif;
-    color: #505050;
     margin: 20px 0 20px 40px;
   }
 

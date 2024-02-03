@@ -8,6 +8,7 @@
     <script src="{% static 'js/script.js' %}"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="#1f1f1f" data-react-helmet="true" name="theme-color" />
     <title>Vadim's Thoughts</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <!-- burger icon -->
@@ -41,6 +42,10 @@
                 <a href="https://www.instagram.com/to.nut/" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="https://t.me/teomirata" target="_blank"><i class="fab fa-telegram"></i></a>
             </div>
+            <button onclick="toggleTheme()" class="theme-toggle-btn">
+                <i class="fas fa-sun"></i> <!-- Иконка солнца -->
+                <i class="fas fa-moon"></i> <!-- Иконка луны -->
+            </button>
             <div class="nav-menu">
                 <a href="{% url 'post_list' %}" class="nav-link">Blog</a>
                 <a href="{% url 'about' %}" class="nav-link">About</a>

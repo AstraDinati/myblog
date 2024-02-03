@@ -1,11 +1,43 @@
 // script.js
-
 function toggleTagsCloud() {
     var tagCont = document.querySelector('.tag-container');
     tagCont.classList.toggle('show');
 
     toggleMobileMenu();
 }
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    const themeColorMetaTag = document.querySelector('meta[name="theme-color"]');
+
+    document.documentElement.setAttribute('data-theme', savedTheme);
+
+    // Установка соответствующего цвета мета-тега theme-color
+    if (savedTheme === 'dark') {
+        themeColorMetaTag.setAttribute('content', '#1f1f1f');
+    } else {
+        themeColorMetaTag.setAttribute('content', '#ffffff');
+    }
+});
+
+
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    const themeColorMetaTag = document.querySelector('meta[name="theme-color"]');
+
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    console.log("Тема изменена на: " + newTheme);
+
+    // Изменение цвета мета-тега theme-color в зависимости от темы
+    if (newTheme === 'dark') {
+        themeColorMetaTag.setAttribute('content', '#1f1f1f'); // Тёмный цвет для тёмной темы
+    } else {
+        themeColorMetaTag.setAttribute('content', '#ffffff'); // Светлый цвет для светлой темы
+    }
+}
+
 
 function toggleMobileMenu() {
     var navMenu = document.querySelector('.nav-menu');
